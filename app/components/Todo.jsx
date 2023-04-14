@@ -3,11 +3,11 @@ var React = require("React");
 var Todo = React.createClass({
 
     render: function () {
-        var {text} = this.props;
+        var {id, text} = this.props;
 
         return(
             <div>
-                {text}
+                {id}. {text}
             </div>
         )
     }

@@ -107,7 +107,7 @@
 
 	$(document).foundation();
 
-	__webpack_require__(377);
+	__webpack_require__(379);
 
 	ReactDOM.render(React.createElement(TodoApp, null), document.getElementById('app'));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
@@ -26143,15 +26143,31 @@
 	"use strict";
 
 	var React = __webpack_require__(248);
+	var TodoList = __webpack_require__(377);
 
 	var TodoApp = React.createClass({
 	    displayName: "TodoApp",
 
+	    getInitialState: function getInitialState() {
+	        return {
+	            todos: [{
+	                id: 1,
+	                text: "Walk the dog"
+	            }, {
+	                id: 2,
+	                text: "Clean the yard"
+	            }]
+	        };
+	    },
+
 	    render: function render() {
+	        var todos = this.state.todos;
+
+
 	        return React.createElement(
 	            "div",
 	            null,
-	            "Todo app"
+	            React.createElement(TodoList, { todos: todos })
 	        );
 	    }
 	});
@@ -44295,13 +44311,68 @@
 /* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	var React = __webpack_require__(248);
+	var Todo = __webpack_require__(378);
+
+	var TodoList = React.createClass({
+	    displayName: "TodoList",
+
+
+	    render: function render() {
+	        var todos = this.props.todos;
+
+	        var renderTodos = function renderTodos() {
+	            return todos.map(function (todo) {
+	                return React.createElement(Todo, { key: todo.id });
+	            });
+	        };
+
+	        return React.createElement(
+	            "div",
+	            null,
+	            renderTodos()
+	        );
+	    }
+	});
+
+	module.exports = TodoList;
+
+/***/ }),
+/* 378 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(248);
+
+	var Todo = React.createClass({
+	    displayName: "Todo",
+
+
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            null,
+	            "Todo"
+	        );
+	    }
+	});
+
+	module.exports = Todo;
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(378);
+	var content = __webpack_require__(380);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(380)(content, {});
+	var update = __webpack_require__(382)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -44318,10 +44389,10 @@
 	}
 
 /***/ }),
-/* 378 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(379)();
+	exports = module.exports = __webpack_require__(381)();
 	// imports
 
 
@@ -44332,7 +44403,7 @@
 
 
 /***/ }),
-/* 379 */
+/* 381 */
 /***/ (function(module, exports) {
 
 	/*
@@ -44388,7 +44459,7 @@
 
 
 /***/ }),
-/* 380 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*

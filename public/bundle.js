@@ -103,13 +103,13 @@
 	    IndexRoute = _require.IndexRoute,
 	    hashHistory = _require.hashHistory;
 
-	var Todo = __webpack_require__(247);
+	var TodoApp = __webpack_require__(247);
 
 	$(document).foundation();
 
 	__webpack_require__(377);
 
-	ReactDOM.render(React.createElement(Todo, null), document.getElementById('app'));
+	ReactDOM.render(React.createElement(TodoApp, null), document.getElementById('app'));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
@@ -26144,8 +26144,8 @@
 
 	var React = __webpack_require__(248);
 
-	var Todo = React.createClass({
-	    displayName: "Todo",
+	var TodoApp = React.createClass({
+	    displayName: "TodoApp",
 
 	    render: function render() {
 	        return React.createElement(
@@ -26156,7 +26156,7 @@
 	    }
 	});
 
-	module.exports = Todo;
+	module.exports = TodoApp;
 
 /***/ }),
 /* 248 */

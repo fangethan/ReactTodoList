@@ -1,6 +1,6 @@
 var React = require("React");
 
-var Todo = React.createClass({
+var TodoApp = React.createClass({
     render: function () {
         return(
             <div>
@@ -10,4 +10,4 @@ var Todo = React.createClass({
     }
 });
 
-module.exports = Todo;
+module.exports = TodoApp;

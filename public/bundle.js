@@ -44313,6 +44313,8 @@
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var React = __webpack_require__(248);
 	var Todo = __webpack_require__(378);
 
@@ -44325,7 +44327,7 @@
 
 	        var renderTodos = function renderTodos() {
 	            return todos.map(function (todo) {
-	                return React.createElement(Todo, { key: todo.id });
+	                return React.createElement(Todo, _extends({ key: todo.id }, todo));
 	            });
 	        };
 
@@ -44352,10 +44354,13 @@
 
 
 	    render: function render() {
+	        var text = this.props.text;
+
+
 	        return React.createElement(
 	            "div",
 	            null,
-	            "Todo"
+	            text
 	        );
 	    }
 	});

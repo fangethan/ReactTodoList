@@ -6,19 +6,28 @@ var TestUtils = require("react-addons-test-utils")
 
 
 var TodoList = require("TodoList");
+var Todo = require("Todo");
 
 describe("TodoList", () => {
     it("TodoList should exist", () => {
         expect(TodoList).toExist();
     });
 
-    // describe("render", () => {
-    //     it("should render clock to output", () => {
-    //         var clock = TestUtils.renderIntoDocument(<Clock totalSeconds={62} />)
-    //         var $el = $(ReactDOM.findDOMNode(clock));
-    //         var actualText = $el.find(".clock-text").text();
-    //         expect(actualText).toBe("01:02")
-    //     })
-    // });
+    it("should render one Todo component for each todo item", () => {
+        var todos = [
+            {
+                id: 1,
+                text: "Walk the dog"
+            },
+            {
+              id: 2,
+              text: "Clean the yard"
+            },
+        ];
+        var todoList = TestUtils.renderIntoDocument(<TodoList todos={todos} />)
+        var todosComponent = TestUtils.scryRenderedComponentsWithType(todoList, Todo);
+
+        expect(todos.length).toBe(todosComponent.length)
+    });
 
 });

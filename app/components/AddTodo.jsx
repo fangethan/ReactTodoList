@@ -7,7 +7,7 @@ var AddTodo = React.createClass({
 
         if(newItem.trim().length > 0){
             this.refs.addTodoItem.value = '';
-            this.props.onSetNewItem(newItem)
+            this.props.onAddNewItem(newItem)
         } else {
             alert("Invalid text provided")
         }

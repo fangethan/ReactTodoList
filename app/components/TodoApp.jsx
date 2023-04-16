@@ -36,7 +36,7 @@ var TodoApp = React.createClass({
         return(
             <div>
                 <TodoList todos={todos} />
-                <AddTodo onSetNewItem={this.handleAddTodoItem} />
+                <AddTodo onAddNewItem={this.handleAddTodoItem} />
             </div>
         )
     }

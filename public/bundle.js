@@ -107,7 +107,7 @@
 
 	$(document).foundation();
 
-	__webpack_require__(379);
+	__webpack_require__(380);
 
 	ReactDOM.render(React.createElement(TodoApp, null), document.getElementById('app'));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
@@ -26144,6 +26144,7 @@
 
 	var React = __webpack_require__(248);
 	var TodoList = __webpack_require__(377);
+	var AddTodo = __webpack_require__(379);
 
 	var TodoApp = React.createClass({
 	    displayName: "TodoApp",
@@ -26166,6 +26167,10 @@
 	        };
 	    },
 
+	    handleAddTodoItem: function handleAddTodoItem(text) {
+	        alert("new todo: " + text);
+	    },
+
 	    render: function render() {
 	        var todos = this.state.todos;
 
@@ -26173,7 +26178,8 @@
 	        return React.createElement(
 	            "div",
 	            null,
-	            React.createElement(TodoList, { todos: todos })
+	            React.createElement(TodoList, { todos: todos }),
+	            React.createElement(AddTodo, { onSetNewItem: this.handleAddTodoItem })
 	        );
 	    }
 	});
@@ -44381,13 +44387,56 @@
 /* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	var React = __webpack_require__(8);
+
+	var AddTodo = React.createClass({
+	    displayName: "AddTodo",
+
+	    onSubmit: function onSubmit(e) {
+	        e.preventDefault();
+	        var newItem = this.refs.addTodoItem.value;
+
+	        if (newItem.trim().length > 0) {
+	            this.refs.addTodoItem.value = '';
+	            this.props.onSetNewItem(newItem);
+	        } else {
+	            alert("Invalid text provided");
+	        }
+	    },
+
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	                "form",
+	                { onSubmit: this.onSubmit },
+	                React.createElement("input", { type: "text", ref: "addTodoItem", placeholder: "Enter a todo item" }),
+	                React.createElement(
+	                    "button",
+	                    { className: "button expanded" },
+	                    "Add Todo Item"
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = AddTodo;
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(380);
+	var content = __webpack_require__(381);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(382)(content, {});
+	var update = __webpack_require__(383)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -44404,10 +44453,10 @@
 	}
 
 /***/ }),
-/* 380 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(381)();
+	exports = module.exports = __webpack_require__(382)();
 	// imports
 
 
@@ -44418,7 +44467,7 @@
 
 
 /***/ }),
-/* 381 */
+/* 382 */
 /***/ (function(module, exports) {
 
 	/*
@@ -44474,7 +44523,7 @@
 
 
 /***/ }),
-/* 382 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*

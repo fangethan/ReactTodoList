@@ -26307,16 +26307,26 @@
 	    displayName: "SearchTodo",
 
 
+	    handleSearch: function handleSearch() {},
+
 	    render: function render() {
 	        return React.createElement(
 	            "div",
 	            null,
 	            React.createElement(
-	                "form",
-	                { onSubmit: this.onSubmit },
-	                React.createElement("input", { type: "text", ref: "addTodoItem", placeholder: "Search a todo item" }),
-	                React.createElement("input", { type: "checkbox", ref: "completeTodos" }),
-	                " Show completed todos"
+	                "div",
+	                null,
+	                React.createElement("input", { type: "text", ref: "addTodoItem", placeholder: "Search a todo item", onChange: this.handleSearch })
+	            ),
+	            React.createElement(
+	                "div",
+	                null,
+	                React.createElement(
+	                    "label",
+	                    null,
+	                    React.createElement("input", { type: "checkbox", ref: "completeTodos", onChange: this.handleSearch }),
+	                    " Show completed todos"
+	                )
 	            )
 	        );
 	    }

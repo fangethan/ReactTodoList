@@ -2,13 +2,21 @@ var React = require("react");
 
 var SearchTodo = React.createClass({
 
+    handleSearch: function () {
+        
+    },
+
     render: function () {
         return(
             <div>
-                <form onSubmit={this.onSubmit}>
-                    <input type="text" ref="addTodoItem" placeholder="Search a todo item" />
-                    <input type="checkbox" ref="completeTodos" /> Show completed todos
-                </form>    
+                <div>
+                    <input type="text" ref="addTodoItem" placeholder="Search a todo item" onChange={this.handleSearch} />
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" ref="completeTodos" onChange={this.handleSearch} /> Show completed todos
+                    </label>
+                </div>
             </div>
         )
     }

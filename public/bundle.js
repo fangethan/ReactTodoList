@@ -26177,8 +26177,9 @@
 	    handleSearchTodo: function handleSearchTodo(showCompleted, searchText) {
 	        this.setState({
 	            showCompleted: showCompleted,
-	            searchText: searchText.toLowercase()
+	            searchText: searchText.toLowerCase()
 	        });
+	        console.log(showCompleted + " " + searchText);
 	    },
 
 	    render: function render() {
@@ -26338,7 +26339,7 @@
 	                React.createElement(
 	                    "label",
 	                    null,
-	                    React.createElement("input", { type: "checkbox", ref: "completeTodos", onChange: this.handleSearch }),
+	                    React.createElement("input", { type: "checkbox", ref: "showCompleted", onChange: this.handleSearch }),
 	                    " Show completed todos"
 	                )
 	            )

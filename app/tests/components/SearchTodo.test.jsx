@@ -12,16 +12,24 @@ describe("SearchTodo", () => {
         expect(SearchTodo).toExist();
     });
 
-    // it("should return true if checkbox is checked", () => {
-    //     var spy = expect.createSpy();
+    it("should call onSearch with entered input text", () => {
+        var spy = expect.createSpy();
+        var todoSearch = TestUtils.renderIntoDocument(<SearchTodo onSearch={spy} />)        
+        todoSearch.refs.searchText.value = "Dog"
 
-    //     var searchTodo = TestUtils.renderIntoDocument(<SearchTodo onSearch={spy} />)
-    //     var $el = $(ReactDOM.findDOMNode(searchTodo))
-    //     searchTodo.refs..value = "Check mail"
+        TestUtils.Simulate.change(todoSearch.refs.searchText)
 
-    //     TestUtils.Simulate.submit($el.find("form")[0])
+        expect(spy).toHaveBeenCalledWith(false, "Dog");
+    });
 
-    //     expect(spy).toHaveBeenCalled("Check mail")
-    // });
+    it("should call onSearch with proper checked value", () => {
+        var spy = expect.createSpy();
+        var todoSearch = TestUtils.renderIntoDocument(<SearchTodo onSearch={spy} />)        
+        todoSearch.refs.showCompleted.checked = true
+
+        TestUtils.Simulate.change(todoSearch.refs.showCompleted)
+
+        expect(spy).toHaveBeenCalledWith(true, "");
+    });
 
 });

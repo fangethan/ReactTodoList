@@ -26152,6 +26152,8 @@
 
 	    getInitialState: function getInitialState() {
 	        return {
+	            showCompleted: false,
+	            searchText: "",
 	            todos: [{
 	                id: 1,
 	                text: "Walk the dog"
@@ -26172,6 +26174,13 @@
 	        alert("new todo: " + text);
 	    },
 
+	    handleSearchTodo: function handleSearchTodo(showCompleted, searchText) {
+	        this.setState({
+	            showCompleted: showCompleted,
+	            searchText: searchText.toLowercase()
+	        });
+	    },
+
 	    render: function render() {
 	        var todos = this.state.todos;
 
@@ -26179,7 +26188,7 @@
 	        return React.createElement(
 	            "div",
 	            null,
-	            React.createElement(SearchTodo, null),
+	            React.createElement(SearchTodo, { onSearch: this.handleSearchTodo }),
 	            React.createElement(TodoList, { todos: todos }),
 	            React.createElement(AddTodo, { onAddNewItem: this.handleAddTodoItem })
 	        );
@@ -26307,7 +26316,12 @@
 	    displayName: "SearchTodo",
 
 
-	    handleSearch: function handleSearch() {},
+	    handleSearch: function handleSearch() {
+	        var showCompleted = this.refs.showCompleted.checked;
+	        var searchText = this.refs.searchText.value;
+
+	        this.props.onSearch(showCompleted, searchText);
+	    },
 
 	    render: function render() {
 	        return React.createElement(
@@ -26316,7 +26330,7 @@
 	            React.createElement(
 	                "div",
 	                null,
-	                React.createElement("input", { type: "text", ref: "addTodoItem", placeholder: "Search a todo item", onChange: this.handleSearch })
+	                React.createElement("input", { type: "text", ref: "searchText", placeholder: "Search a todo item", onChange: this.handleSearch })
 	            ),
 	            React.createElement(
 	                "div",

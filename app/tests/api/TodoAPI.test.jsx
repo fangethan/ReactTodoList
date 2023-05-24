@@ -55,11 +55,11 @@ describe("TodoAPI", () => {
             {
                 id: 1,
                 text: "test1",
-                completed: false,
+                completed: true,
             }, {
                 id: 2,
                 text: "test2",
-                completed: true,
+                completed: false,
             }, {
                 id: 3,
                 text: "test3",
@@ -75,6 +75,11 @@ describe("TodoAPI", () => {
         it("should return all items if showCompleted is false", () => {
             var filteredTodos = TodoAPI.filterTodos(todos, false, "");
             expect(filteredTodos.length).toBe(1)
+        });
+
+        it("should sort by completed status", () => {
+            var filteredTodos = TodoAPI.filterTodos(todos, true, "");
+            expect(filteredTodos[0].completed).toBe(false)
         });
 
     });

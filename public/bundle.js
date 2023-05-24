@@ -35262,6 +35262,11 @@
 	            return !todo.completed || showCompleted;
 	        });
 
+	        filteredTodos = filteredTodos.filter(function (todo) {
+	            var filterText = todo.text.toLowerCase();
+	            return filterText == 0 || filterText.indexOf(searchText) > -1;
+	        });
+
 	        filteredTodos.sort(function (a, b) {
 	            if (!a.completed && b.completed) {
 	                return -1;

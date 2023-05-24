@@ -24,8 +24,13 @@ module.exports = {
         
         filteredTodos = filteredTodos.filter((todo) => {
             return !todo.completed || showCompleted;
-        })
+        });
         
+        filteredTodos = filteredTodos.filter((todo) => {
+            var filterText = todo.text.toLowerCase()
+            return filterText == 0 || filterText.indexOf(searchText) > -1;          
+        });
+
         filteredTodos.sort((a,b) => {
             if (!a.completed && b.completed) {
                 return -1;
@@ -33,7 +38,7 @@ module.exports = {
                 return 1;
             }
             return 0;
-        })
+        });
 
         return filteredTodos;
 
